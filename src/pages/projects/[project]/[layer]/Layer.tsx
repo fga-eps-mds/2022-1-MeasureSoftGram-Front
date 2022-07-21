@@ -1,29 +1,17 @@
 import React from 'react';
 import type { NextPage } from 'next';
+import { useRouter,  } from 'next/router';
 import Head from 'next/head';
 
-import { formatRelative } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
-
-import { Box, Container, Typography } from '@mui/material';
+import { Container } from '@mui/material';
 
 import Layout from '@components/Layout';
-
-import Circle from './styles';
+import TabSwitch from '../components/TabSwitch';
 
 const Layer: NextPage = () => {
-  const resultMock = {
-    id: 1,
-    name: '2022-1-MeasureSoftGram-Front',
-    description: 'Repositório Frontend do software MeasureSoftGram.',
-    github_url: 'https://github.com/fga-eps-mds/2022-1-MeasureSoftGram-Front',
-    created_at: '2022-07-14T020:00:55.603466',
-    updated_at: '2022-07-15T08:58:55.603466'
-  };
-
-  const lastUpdateDate = formatRelative(new Date(resultMock.updated_at), new Date(), {
-    locale: ptBR
-  });
+  const {
+    query: { layer }
+  } = useRouter();
 
   return (
     <Layout>
@@ -32,19 +20,9 @@ const Layer: NextPage = () => {
       </Head>
 
       <Container>
-        <Box display="flex" flexDirection="column">
-          <Box display="flex" flexDirection="row" alignItems="center" marginY="60px">
-            <Circle />
-
-            <Box>
-              <Typography variant="h6">{resultMock.name}</Typography>
-              <Typography variant="caption">última atualização: {lastUpdateDate}</Typography>
-            </Box>
-          </Box>
-        </Box>
+        <TabSwitch layer={layer}/>
       </Container>
     </Layout>
   );
-};
-
+}
 export default Layer;
