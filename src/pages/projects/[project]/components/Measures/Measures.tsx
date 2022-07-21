@@ -27,7 +27,7 @@ const Measures: React.FC = () => {
 
   return (
     <Container>
-      <Box marginY="60px">
+      <Box marginY="60px" data-testid="measures-history">
         <ReactEcharts
           option={chartOptions}
           style={{ height: "600px", width: "100%" }}

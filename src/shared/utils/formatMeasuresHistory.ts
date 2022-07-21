@@ -13,7 +13,6 @@ const longestHistoryMetricsIndex = (measuresHistoryResults: Array<MeasuresHistor
 const formatTwoDecimalPlaces = (value: number) => Math.round(value * 100) / 100;
 
 const formatMeasuresHistoryChartData = (measuresHistoryResults: Array<MeasuresHistoryResult>) => {
-  console.log(measuresHistoryResults)
   const legendData: string[] = []
 
   const xAxisData = measuresHistoryResults[longestHistoryMetricsIndex(measuresHistoryResults)]
